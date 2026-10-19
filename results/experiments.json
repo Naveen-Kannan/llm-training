@@ -1,0 +1,26 @@
+{
+  "status": "Historical results transcribed from experiment reports; not a fresh training reproduction",
+  "scratch_pretraining": {
+    "datasets": ["TinyStories", "OpenWebText"],
+    "base_model": {"width": 512, "layers": 4, "heads": 16},
+    "comparisons": ["learning rate", "batch size", "normalization", "positional encoding", "feed-forward architecture"],
+    "scope": "Small scratch-trained transformers; not the same model as OLMo reasoning post-training"
+  },
+  "scaling": {
+    "isoflop_budgets": [3e16, 1e17, 3e17, 1e18],
+    "model_sizes_per_budget": "3 to 4",
+    "report_fit_exponents": {"model_size": 0.626, "data_size": 0.374},
+    "initial_extrapolation": {"budget_hours": 48, "estimated_nonembedding_parameters": 1.327e9, "tokens": 8.21e9},
+    "submitted_memory_adjusted_config": {"width": 1920, "layers": 24, "feedforward_width": 5120, "heads": 30, "estimated_nonembedding_parameters": 1061683200, "tokens": 10.2e9},
+    "caveat": "The final configuration was submitted after reducing layer count to avoid an out-of-memory condition. A completed final run and achieved loss are not established by the report. Parameter counts use the report's 12*layers*width^2 approximation, not a loaded checkpoint count. The report notes limited sampling and departure from the unconstrained fit."
+  },
+  "reasoning_rl": {
+    "base_checkpoint": "allenai/OLMo-2-0425-1B",
+    "dataset": "GSM8K",
+    "seeds": 3,
+    "comparisons": ["prompting", "learning rate", "group normalization", "on-policy objective variants", "off-policy importance reweighting"],
+    "reported_final_mean_validation_rewards_off_policy": {"GSPO": 0.48, "NoClip": 0.35, "naive": 0.26, "token_clipped": 0.22},
+    "short_response_penalty_experiment": {"DrGRPO_reference_mean_reward": 0.35, "modified_mean_reward": 0.41},
+    "caveat": "These are the report's validation reward summaries, not an independently measured test accuracy. Several variants had high seed variance and collapse. The short-response penalty comparison is exploratory and does not establish a statistically significant gain."
+  }
+}

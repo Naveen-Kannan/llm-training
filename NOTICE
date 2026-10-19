@@ -1,0 +1,32 @@
+LLM Training
+Experimental implementations and experiments by Naveen Kannan.
+
+The work originated in Stanford CS336 and is organized here by subsystem.
+Original course handouts, assignment write-ups, tests, datasets, credentials,
+and grading/submission infrastructure are not part of this distribution.
+
+MIT-licensed Stanford sources:
+  https://github.com/stanford-cs336/assignment1-basics
+  https://github.com/stanford-cs336/assignment2-systems
+  https://github.com/stanford-cs336/assignment3-scaling
+  https://github.com/stanford-cs336/assignment4-data
+
+src/llm_training/pretraining contains Naveen's tokenizer, model, optimizer,
+and training implementations, developed against Stanford scaffolding.
+src/llm_training/systems contains experimental attention, distributed
+training, and profiling implementations and benchmark scaffolding.
+src/llm_training/reference is Stanford's reference transformer implementation,
+used by systems benchmarks; it is not presented as Naveen's own implementation.
+src/llm_training/data contains data-processing experiments and supporting
+scaffolding. The scaling reference curves are upstream provided data, not
+measurements from Naveen's own training runs.
+
+src/llm_training/posttraining contains custom GRPO utilities and experiment
+runners. Upstream loader/server/prompt assets without a license in the
+inspected source snapshot are intentionally not redistributed.
+
+src/llm_training/posttraining/drgrpo_grader.py:
+  Copyright 2025 Garena Online Private Limited
+  Licensed under the Apache License, Version 2.0.
+  https://github.com/sail-sg/understand-r1-zero
+  Original copyright and attribution remain in the file.
